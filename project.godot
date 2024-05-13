@@ -11,5 +11,15 @@ config_version=5
 [application]
 
 config/name="3DProject"
+run/main_scene="res://scenes/farmland.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
+run/max_fps=60
 config/icon="res://icon.svg"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg")
+
+[physics]
+
+3d/physics_engine="JoltPhysics3D"
