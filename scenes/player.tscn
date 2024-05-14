@@ -1,22 +1,23 @@
-[gd_scene load_steps=4 format=3 uid="uid://df7lqt7r58y2r"]
+[gd_scene load_steps=5 format=3 uid="uid://lwkhfjtjq5ay"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_g80jf"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_g80jf"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_40cfi"]
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j13kd"]
+friction = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_gxmbr"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8awd4"]
 
-[node name="Player" type="CharacterBody3D"]
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_0tlv2"]
+
+[node name="Player" type="RigidBody3D"]
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+physics_material_override = SubResource("PhysicsMaterial_j13kd")
 script = ExtResource("1_g80jf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("BoxShape3D_40cfi")
+shape = SubResource("CapsuleShape3D_8awd4")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="CollisionShape3D"]
-mesh = SubResource("BoxMesh_gxmbr")
-
-[node name="CamMount" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.525687)
-
-[node name="FirstPersonCam" type="Camera3D" parent="CamMount"]
-transform = Transform3D(1, 0, 0, 0, 0.996393, -0.0848604, 0, 0.0848604, 0.996393, 0, 0.604738, -0.663341)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_0tlv2")

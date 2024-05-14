@@ -1,3 +1,22 @@
-[gd_scene format=3 uid="uid://cufy1o0no0dyl"]
+[gd_scene load_steps=3 format=3 uid="uid://cufy1o0no0dyl"]
+
+[ext_resource type="PackedScene" uid="uid://lwkhfjtjq5ay" path="res://scenes/player.tscn" id="1_uk1at"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uakq3"]
+albedo_color = Color(0.12566, 0.488291, 2.98411e-06, 1)
 
 [node name="Node3D" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+use_collision = true
+size = Vector3(50, 0.5, 50)
+material = SubResource("StandardMaterial3D_uakq3")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.639546, 0.768753, 0, -0.768753, 0.639546, 0, 16.0706, 11.585)
+
+[node name="Player" parent="." instance=ExtResource("1_uk1at")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.46402, 2.29985, 12.116)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.972776, 0, 0.231748, 0.229217, 0.147395, 0.962151, -0.0341585, 0.989078, -0.143382, 0, 12.6908, 14.4335)
